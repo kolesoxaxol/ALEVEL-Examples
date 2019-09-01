@@ -61,7 +61,7 @@ namespace Example1
             string lastName;
 
             // NOTE: firstName and lastName have not been assigned yet.  Their values may not be used.
-            SplitName(fullName, out firstName, out lastName);
+            SplitName(fullName, out firstName,  out lastName);
 
             //SplitName(fullName,ref firstName, ref lastName);
             // NOTE: firstName and lastName have been assigned, because the out parameter passing mode guarantees it.
