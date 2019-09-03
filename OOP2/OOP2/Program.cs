@@ -1,5 +1,7 @@
 ﻿using System;
 using System.CodeDom;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Example1
 {
@@ -16,25 +18,25 @@ namespace Example1
         // Splits a string containing a first and last name separated
         // by a space into two distinct strings, one containing the first name and one containing the last name
 
-        static void SplitName(string fullName, out string firstName, out string lastName)
-        {
-            // NOTE: firstName and lastName have not been assigned to yet.  Their values cannot be used.
-            int spaceIndex = fullName.IndexOf(' ');
-            firstName = fullName.Substring(0, spaceIndex).Trim();
-            lastName = fullName.Substring(spaceIndex).Trim();
-        }
-
-
-
-
-
-        //static void SplitName(string fullName, ref string firstName, ref string lastName)
+        //static void SplitName(string fullName, out string firstName, out string lastName)
         //{
         //    // NOTE: firstName and lastName have not been assigned to yet.  Their values cannot be used.
         //    int spaceIndex = fullName.IndexOf(' ');
-        //   // firstName = fullName.Substring(0, spaceIndex).Trim();
+        //    firstName = fullName.Substring(0, spaceIndex).Trim();
         //    lastName = fullName.Substring(spaceIndex).Trim();
         //}
+
+
+
+
+
+        static void SplitName(string fullName, ref string firstName, ref string lastName)
+        {
+            // NOTE: firstName and lastName have not been assigned to yet.  Their values cannot be used.
+            int spaceIndex = fullName.IndexOf(' ');
+            // firstName = fullName.Substring(0, spaceIndex).Trim();
+            lastName = fullName.Substring(spaceIndex).Trim();
+        }
 
 
 
@@ -57,18 +59,18 @@ namespace Example1
         {
             
             string fullName = "Yevhenii Koliesnik";
-            string firstName;
-            string lastName;
+            string firstName = "";
+            string lastName = "";
+            List<int> list = new List<int>();
 
             // NOTE: firstName and lastName have not been assigned yet.  Their values may not be used.
-            SplitName(fullName, out firstName,  out lastName);
+           // SplitName(fullName, out firstName,  out lastName);
 
-            //SplitName(fullName,ref firstName, ref lastName);
+            SplitName(fullName,ref firstName, ref lastName);
             // NOTE: firstName and lastName have been assigned, because the out parameter passing mode guarantees it.
             Console.WriteLine("First Name: {0}. Last Name: {1}", firstName, lastName);
 
-
-
+           
             // ++++++++++++++++++++++++++++++++++++++//
             int numberRef = 15;
 

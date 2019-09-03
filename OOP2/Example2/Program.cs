@@ -11,7 +11,7 @@ namespace Example2
            // i = "Hello"; // error CS0029: Cannot implicitly convert type 'string' to 'int'
 
 
-            double x = 1234.7;
+            double x = 1234999995555555555555555555555555555555555555555555555555555555.7;
             int a;
 
             // Cast double to int.
