@@ -70,6 +70,7 @@ namespace Example4
             link2.WriteFamily();
             IUserInfo link3 = (IUserInfo)obj;
             link3.WriteName();
+            
         }
     }
 
