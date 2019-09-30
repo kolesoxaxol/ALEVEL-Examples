@@ -10,6 +10,8 @@ namespace Example8
     {
         static void Main(string[] args)
         {
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+          
         }
     }
 }
