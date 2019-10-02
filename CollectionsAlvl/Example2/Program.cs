@@ -18,6 +18,8 @@ namespace Example2
 
                 yield return number++;
             }
+            // difference between break and yield break 
+            yield return 10;
         }
 
         static void Main(string[] args)
