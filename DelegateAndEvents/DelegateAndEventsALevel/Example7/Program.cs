@@ -56,7 +56,7 @@ class Program
 {
     static void Main()
     {
-        MyEvent evt = new MyEvent();
+        MyEvent evt = new MyEvent();  
         UserInfo user1 = new UserInfo(Name: "Alex", Family: "Erohin", Age: 26);
 
         // Добавляем обработчик события
