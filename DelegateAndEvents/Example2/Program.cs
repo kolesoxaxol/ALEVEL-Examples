@@ -8,7 +8,7 @@ namespace Example2
 {
     // Объявление делегата, ссылающегося на функцию
     // с двумя параметрами и выводом булевого типа
-    public delegate bool CompareDelegate(object lhs, object rhs);
+    public delegate bool CompareDelegate(object student1, object student2);
 
     class Student
     {
@@ -31,11 +31,11 @@ namespace Example2
         }
 
         // Пользовательская функция сравнение, возвращающая булевое значение
-        public static bool RhsIsGreater(object lhs, object rhs)
+        public static bool IsGreater(object student1, object student2)
         {
-            Student stdLhs = (Student)lhs;
-            Student stdRhs = (Student)rhs;
-            return stdRhs.marks > stdLhs.marks;
+            Student std1 = (Student)student1;
+            Student std2 = (Student)student2;
+            return std1.marks > std2.marks;
         }
     }
 
@@ -79,7 +79,7 @@ namespace Example2
 
                 // Создание делегата с передачей
                 // статического метода класса Student в качестве аргумента
-                CompareDelegate StudentCompareOp = new CompareDelegate(Student.RhsIsGreater);
+                CompareDelegate StudentCompareOp = new CompareDelegate(Student.IsGreater);
 
                 // Вызов статического метода класса BubbleSortClass,
                 // передача массива объектов и делегата
