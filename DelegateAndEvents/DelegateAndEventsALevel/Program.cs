@@ -11,6 +11,8 @@ namespace DelegateAndEventsALevel
 
     class Program
     {
+     
+
         static void Main(string[] args)
         {
             double radius, length, area, volume;
@@ -23,7 +25,7 @@ namespace DelegateAndEventsALevel
             CalcFigure CF = new CalcFigure(Figure.GetArea);
             area = CF(radius);
 
-            CF = new CalcFigure(Figure.GetVolume);
+             CF = new CalcFigure(Figure.GetVolume);
             volume = CF(radius);
 
             CF = new CalcFigure(Figure.GetLength);

@@ -62,7 +62,7 @@ namespace Example5
                 new UserInfo("Alexey","Volkov",40000),
                 new UserInfo("Wiley","Coyote",1000000)};
 
-            ArrSort.Sort(userinfo, UserInfo.UserSalary);
+            ArrSort.Sort<UserInfo>(userinfo, UserInfo.UserSalary);
 
             Console.WriteLine("Сортируем исходный объект по доходу: \n" +
                               "-------------------------------------\n");

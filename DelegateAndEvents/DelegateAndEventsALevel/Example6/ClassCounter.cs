@@ -4,6 +4,12 @@ using System.Text;
 
 namespace Example6
 {
+    public delegate void MethodContainer();
+    public interface MyEvtTet
+    {
+        event ClassCounter.MethodContainer onCount;
+    }
+
     class ClassCounter  //Это класс - в котором производится счет.
     {
 
@@ -11,7 +17,7 @@ namespace Example6
         //delegate <выходной тип> ИмяДелегата(<тип входных параметров>);
         //Мы создаем на void Message(). Он должен запуститься, когда условие выполнится.
 
-        public delegate void MethodContainer();
+    
         //Событие OnCount c типом делегата MethodContainer.
         public event MethodContainer onCount;
 
