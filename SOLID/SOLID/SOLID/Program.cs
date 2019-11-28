@@ -1,5 +1,7 @@
-﻿using SOLID.S.Example1;
+﻿using SOLID.L;
+using SOLID.S.Example1;
 using System;
+
 
 namespace SOLID
 {
@@ -22,6 +24,14 @@ namespace SOLID
             // используем объект продукта в новом сервисе
             var product3 = new ProductWithValidator(new CustomerServiceProductValidator()) { Price = 100 };
 
+
+
+            Rectangle rect = new Square();
+            rect.Width = 3;
+            rect.Height = 10;
+
+            Console.WriteLine(rect.GetRectangleArea());
+            Console.ReadKey();
 
             Console.WriteLine("Hello World!");
         }
