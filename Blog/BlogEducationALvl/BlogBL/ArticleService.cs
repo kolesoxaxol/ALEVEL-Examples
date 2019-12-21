@@ -1,31 +1,41 @@
 ﻿using BlogBL.BLModels;
 using BlogDAL.Entities;
 using BlogDAL.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlogBL
 {
-    // TODO: make it with generic services
-    public class ArticleService 
+    public interface IArticleService : IGenereicService<ArticleBL>
+    { 
+        
+    }
+    public class ArticleService: GenericService<ArticleBL, Article>, IArticleService
     {
         private readonly IGenericRepository<Article> repository;
         public ArticleService()
         { 
             repository = new GenericRepository<Article>(); 
         }
-        public ArticleBL GetById(int id)
+
+        public override ArticleBL Map(Article model)
         {
-            var articleEntity = repository.FindById(id);
-            // TODO: Install mapper\
-            // TODO: finish mapping all fields
+            // TODO : use mapper 
             return new ArticleBL()
-            {
-                AuthorId = articleEntity.AuthorId
+            {   
+                AuthorId = model.AuthorId,
+                Body = model.Body,
+                Image = model.Image,
+                IsActive = model.IsActive,
+                SubTitle = model.SubTitle,
+                Title = model.Title,
+                Date = model.Date,
+                Id = model.Id
             };
         }
+
+        public override Article Map(ArticleBL model)
+        {
+            throw new System.NotImplementedException();
+        }
+
     }
 }

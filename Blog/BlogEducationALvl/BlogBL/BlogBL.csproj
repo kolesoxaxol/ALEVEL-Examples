@@ -44,6 +44,7 @@
     <Compile Include="ArticleService.cs" />
     <Compile Include="BLModels\ArticleBL.cs" />
     <Compile Include="BLModels\CommentBL.cs" />
+    <Compile Include="GenericService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

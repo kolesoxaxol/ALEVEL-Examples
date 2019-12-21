@@ -1,11 +1,12 @@
 ﻿using BlogBL;
+using BlogEducationALvl.Models;
 using System.Web.Mvc;
 
 namespace BlogEducationALvl.Controllers
 {
     public class ArticleController : Controller
     {
-        private readonly ArticleService _articleService;
+        private readonly IArticleService _articleService;
         public ArticleController()
         {
             _articleService = new ArticleService();
@@ -19,11 +20,24 @@ namespace BlogEducationALvl.Controllers
         }
 
         // GET: Article/Details/5
-        // TODO: add view for this action 
+ 
         public ActionResult Details(int id)
         {
-            _articleService.GetById(id);
-            return View();
+            var articleBL =  _articleService.FindById(id);
+
+            ArticleModel article = new ArticleModel
+            {
+                AuthorId = articleBL.AuthorId,
+                Body = articleBL.Body,
+                Image = articleBL.Image,
+                IsActive = articleBL.IsActive,
+                SubTitle = articleBL.SubTitle,
+                Title = articleBL.Title,
+                Date = articleBL.Date,
+                Id = articleBL.Id
+            };
+
+            return View(article);
         }
 
         // GET: Article/Create

@@ -1,14 +1,11 @@
-﻿using NPoco;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BlogDAL.Entities
+namespace BlogEducationALvl.Models
 {
-  
-    public class Article
+    public class ArticleModel
     {
         //public Article()
         //{
@@ -23,6 +20,6 @@ namespace BlogDAL.Entities
         public int AuthorId { get; set; }
         public DateTime Date { get; set; }
         public bool IsActive { get; set; }
-        public List<Comment> Comments { get; set; }
+        public List<CommentModel> Comments { get; set; }
     }
 }
