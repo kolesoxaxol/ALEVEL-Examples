@@ -1,4 +1,5 @@
-﻿using BlogBL.BLModels;
+﻿using System.Collections.Generic;
+using BlogBL.BLModels;
 using BlogDAL.Entities;
 using BlogDAL.Repository;
 
@@ -37,5 +38,14 @@ namespace BlogBL
             throw new System.NotImplementedException();
         }
 
+        public override IList<ArticleBL> Map(IList<Article> entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public override IList<Article> Map(IList<ArticleBL> entity)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

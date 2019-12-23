@@ -15,7 +15,8 @@ namespace BlogEducationALvl.Controllers
         // GET: Article
         public ActionResult Index()
         {
-         
+            var listArticle = _articleService.GetAll();
+           
             return View();
         }
 

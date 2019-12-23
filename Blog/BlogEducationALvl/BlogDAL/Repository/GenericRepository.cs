@@ -11,7 +11,7 @@ namespace BlogDAL.Repository
         int Create(T item);
         T FindById(int id);
         T FindById(string id);
-        IQueryProviderWithIncludes<T> Get();
+        IList<T> Get();
         void Remove(T item);
         void Update(T item);
         void Dispose();
@@ -53,9 +53,9 @@ namespace BlogDAL.Repository
             throw new NotImplementedException();
         }
 
-        public IQueryProviderWithIncludes<T> Get()
+        public IList<T> Get()
         {
-            throw new NotImplementedException();
+            return _db.Query<T>().ToList();
         }
 
         public Page<T> GetDataByPage(long page, long itemPerPage, Sql sql)

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticleService.cs" />
+    <Compile Include="BLAutomapperProfile.cs" />
     <Compile Include="BLModels\ArticleBL.cs" />
     <Compile Include="BLModels\CommentBL.cs" />
     <Compile Include="GenericService.cs" />

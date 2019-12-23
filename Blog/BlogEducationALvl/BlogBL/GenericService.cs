@@ -1,4 +1,5 @@
 ﻿using BlogDAL.Repository;
+using System.Collections.Generic;
 
 namespace BlogBL
 {
@@ -7,6 +8,7 @@ namespace BlogBL
        
     {
         BLModel FindById(int id);
+        IList<BLModel> GetAll();
     }
 
     public abstract class GenericService<BLModel, DModel> : IGenereicService<BLModel>
@@ -25,8 +27,21 @@ namespace BlogBL
             return Map(entity);
         }
 
+        public IList<BLModel> GetAll()
+        {
+            var listEntity = _repositroy.Get();           
+            return Map(listEntity);
+        }
+
+        /// <summary>
+        /// convert Dal model to Bl molder
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public abstract BLModel Map(DModel entity);
         public abstract DModel Map(BLModel blmodel);
 
+        public abstract IList<BLModel> Map(IList<DModel> entity);
+        public abstract IList<DModel> Map(IList<BLModel> entity);
     }
 }
