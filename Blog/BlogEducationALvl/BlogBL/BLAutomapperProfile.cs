@@ -10,7 +10,8 @@ namespace BlogBL
         public BLAutomapperProfile()
         {
             CreateMap<ArticleBL, Article>().ReverseMap();
-            CreateMap<IList<ArticleBL>, IList<Article>>().ReverseMap();
+            CreateMap<CommentBL, Comment>().ReverseMap();
+     
 
         }
     }

@@ -1,5 +1,7 @@
-﻿using BlogBL;
+﻿using AutoMapper;
+using BlogBL;
 using BlogEducationALvl.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace BlogEducationALvl.Controllers
@@ -7,17 +9,20 @@ namespace BlogEducationALvl.Controllers
     public class ArticleController : Controller
     {
         private readonly IArticleService _articleService;
-        public ArticleController(IArticleService articleService)
+        private readonly IMapper _mapper;
+        public ArticleController(IArticleService articleService, IMapper mapper)
         {
             _articleService = articleService;
+            _mapper = mapper;
         }
 
         // GET: Article
         public ActionResult Index()
         {
-            var listArticle = _articleService.GetAll();
-           
-            return View();
+            
+            var listBLArticle = _articleService.GetAll();
+            var articles = _mapper.Map<IEnumerable<ArticleModel>>(listBLArticle);          
+            return View(articles);
         }
 
         // GET: Article/Details/5
@@ -25,18 +30,18 @@ namespace BlogEducationALvl.Controllers
         public ActionResult Details(int id)
         {
             var articleBL =  _articleService.FindById(id);
-
-            ArticleModel article = new ArticleModel
-            {
-                AuthorId = articleBL.AuthorId,
-                Body = articleBL.Body,
-                Image = articleBL.Image,
-                IsActive = articleBL.IsActive,
-                SubTitle = articleBL.SubTitle,
-                Title = articleBL.Title,
-                Date = articleBL.Date,
-                Id = articleBL.Id
-            };
+            var article = _mapper.Map<ArticleModel>(articleBL);
+            //ArticleModel article = new ArticleModel
+            //{
+            //    AuthorId = articleBL.AuthorId,
+            //    Body = articleBL.Body,
+            //    Image = articleBL.Image,
+            //    IsActive = articleBL.IsActive,
+            //    SubTitle = articleBL.SubTitle,
+            //    Title = articleBL.Title,
+            //    Date = articleBL.Date,
+            //    Id = articleBL.Id
+            //};
 
             return View(article);
         }

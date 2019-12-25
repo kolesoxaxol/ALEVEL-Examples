@@ -8,7 +8,7 @@ namespace BlogBL
        
     {
         BLModel FindById(int id);
-        IList<BLModel> GetAll();
+        IEnumerable<BLModel> GetAll();
     }
 
     public abstract class GenericService<BLModel, DModel> : IGenereicService<BLModel>
@@ -27,7 +27,7 @@ namespace BlogBL
             return Map(entity);
         }
 
-        public IList<BLModel> GetAll()
+        public IEnumerable<BLModel> GetAll()
         {
             var listEntity = _repositroy.Get();           
             return Map(listEntity);
@@ -41,7 +41,7 @@ namespace BlogBL
         public abstract BLModel Map(DModel entity);
         public abstract DModel Map(BLModel blmodel);
 
-        public abstract IList<BLModel> Map(IList<DModel> entity);
-        public abstract IList<DModel> Map(IList<BLModel> entity);
+        public abstract IEnumerable<BLModel> Map(IList<DModel> entity);
+        public abstract IEnumerable<DModel> Map(IList<BLModel> entity);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AutoMapper;
 using BlogBL.BLModels;
 using BlogDAL.Entities;
 using BlogDAL.Repository;
@@ -13,25 +14,27 @@ namespace BlogBL
 
     public class ArticleService : GenericService<ArticleBL, Article>, IArticleService
     {
-        public ArticleService(IGenericRepository<Article> repository) : base(repository)
+        private readonly IMapper _mapper;
+        public ArticleService(IGenericRepository<Article> repository, IMapper mapper) : base(repository)
         {
-
+            _mapper = mapper;
         }
 
         public override ArticleBL Map(Article model)
         {
+            return _mapper.Map<ArticleBL>(model);
             // TODO : use mapper 
-            return new ArticleBL()
-            {
-                AuthorId = model.AuthorId,
-                Body = model.Body,
-                Image = model.Image,
-                IsActive = model.IsActive,
-                SubTitle = model.SubTitle,
-                Title = model.Title,
-                Date = model.Date,
-                Id = model.Id
-            };
+            //return new ArticleBL()
+            //{
+            //    AuthorId = model.AuthorId,
+            //    Body = model.Body,
+            //    Image = model.Image,
+            //    IsActive = model.IsActive,
+            //    SubTitle = model.SubTitle,
+            //    Title = model.Title,
+            //    Date = model.Date,
+            //    Id = model.Id
+            //};
         }
 
         public override Article Map(ArticleBL model)
@@ -39,14 +42,14 @@ namespace BlogBL
             throw new System.NotImplementedException();
         }
 
-        public override IList<ArticleBL> Map(IList<Article> entity)
+        public override IEnumerable<ArticleBL> Map(IList<Article> entitiesList)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<IEnumerable<ArticleBL>>(entitiesList);
         }
 
-        public override IList<Article> Map(IList<ArticleBL> entity)
+        public override IEnumerable<Article> Map(IList<ArticleBL> entitiesList)
         {
-            throw new System.NotImplementedException();
+            return _mapper.Map<IEnumerable<Article>>(entitiesList);
         }
     }
 }

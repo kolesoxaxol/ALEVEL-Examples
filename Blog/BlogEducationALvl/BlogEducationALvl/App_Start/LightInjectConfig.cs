@@ -15,15 +15,20 @@ namespace BlogEducationALvl.App_Start
         {
             var container = new ServiceContainer();
             container.RegisterControllers(Assembly.GetExecutingAssembly());        
-            container.EnableMvc();
+        
             container.EnablePerWebRequestScope();
           
             var config = new MapperConfiguration(cfg => cfg.AddProfiles(
-                  new List<Profile>() { new WebAutomapperProfile(), new BLAutomapperProfile() }));      
+                  new List<Profile>() { new WebAutomapperProfile(), new BLAutomapperProfile() })); 
+            
             container.Register(c => config.CreateMapper());
+
             container = BLLightInjectCongiguration.Congiguration(container);
-            var resolver = new LightInjectWebApiDependencyResolver(container);             
-            DependencyResolver.SetResolver(new LightInjectMvcDependencyResolver(container));
+
+            container.Register<IArticleService, ArticleService>();
+            //var resolver = new LightInjectWebApiDependencyResolver(container);             
+            //DependencyResolver.SetResolver(new LightInjectMvcDependencyResolver(container));
+            container.EnableMvc();
         }
     }
 }
