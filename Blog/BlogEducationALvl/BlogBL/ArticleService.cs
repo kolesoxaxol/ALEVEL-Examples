@@ -6,22 +6,23 @@ using BlogDAL.Repository;
 namespace BlogBL
 {
     public interface IArticleService : IGenereicService<ArticleBL>
-    { 
-        
-    }
-    public class ArticleService: GenericService<ArticleBL, Article>, IArticleService
     {
-        private readonly IGenericRepository<Article> repository;
-        public ArticleService()
-        { 
-            repository = new GenericRepository<Article>(); 
+
+    }
+
+
+    public class ArticleService : GenericService<ArticleBL, Article>, IArticleService
+    {
+        public ArticleService(IGenericRepository<Article> repository) : base(repository)
+        {
+
         }
 
         public override ArticleBL Map(Article model)
         {
             // TODO : use mapper 
             return new ArticleBL()
-            {   
+            {
                 AuthorId = model.AuthorId,
                 Body = model.Body,
                 Image = model.Image,

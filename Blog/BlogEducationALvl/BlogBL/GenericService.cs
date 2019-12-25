@@ -16,9 +16,9 @@ namespace BlogBL
         where DModel : class
     {
         private readonly IGenericRepository<DModel> _repositroy;
-        public GenericService()
+        public GenericService(IGenericRepository<DModel> repository)
         { 
-            _repositroy = new GenericRepository<DModel>();
+            _repositroy = repository;
         }
 
         public virtual BLModel FindById(int id)

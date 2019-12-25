@@ -7,9 +7,9 @@ namespace BlogEducationALvl.Controllers
     public class ArticleController : Controller
     {
         private readonly IArticleService _articleService;
-        public ArticleController()
+        public ArticleController(IArticleService articleService)
         {
-            _articleService = new ArticleService();
+            _articleService = articleService;
         }
 
         // GET: Article
