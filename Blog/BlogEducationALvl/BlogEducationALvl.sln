@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogDAL", "BlogDAL\BlogDAL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogBL", "BlogBL\BlogBL.csproj", "{326D1EF9-0B95-489F-B9CB-D594CBB9057B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALvlBlog.WebApi", "ALvlBlog.WebApi\ALvlBlog.WebApi.csproj", "{90D9DE2A-427C-4D27-8BA4-7A726025B96B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{326D1EF9-0B95-489F-B9CB-D594CBB9057B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{326D1EF9-0B95-489F-B9CB-D594CBB9057B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{326D1EF9-0B95-489F-B9CB-D594CBB9057B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D9DE2A-427C-4D27-8BA4-7A726025B96B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D9DE2A-427C-4D27-8BA4-7A726025B96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D9DE2A-427C-4D27-8BA4-7A726025B96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D9DE2A-427C-4D27-8BA4-7A726025B96B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
