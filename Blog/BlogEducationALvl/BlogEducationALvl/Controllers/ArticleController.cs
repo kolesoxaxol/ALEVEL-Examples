@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BlogBL;
 using BlogEducationALvl.Models;
+using BlogEducationALvl.Services;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -10,10 +11,12 @@ namespace BlogEducationALvl.Controllers
     {
         private readonly IArticleService _articleService;
         private readonly IMapper _mapper;
-        public ArticleController(IArticleService articleService, IMapper mapper)
+        private readonly IEmailService _emailService;
+        public ArticleController(IArticleService articleService, IMapper mapper, IEmailService emailService)
         {
             _articleService = articleService;
             _mapper = mapper;
+            _emailService = emailService;
         }
 
         // GET: Article
@@ -21,7 +24,9 @@ namespace BlogEducationALvl.Controllers
         {
             
             var listBLArticle = _articleService.GetAll();
-            var articles = _mapper.Map<IEnumerable<ArticleModel>>(listBLArticle);          
+            var articles = _mapper.Map<IEnumerable<ArticleModel>>(listBLArticle);     
+            
+
             return View(articles);
         }
 
@@ -59,6 +64,11 @@ namespace BlogEducationALvl.Controllers
             try
             {
                 // TODO: Add insert logic here
+                string subject = "creted new article";
+                string to = "dp260793kev@yandex.ua";
+                string from = "test@mail.com";
+                string body = "Please visit our blog we created new article";
+                _emailService.SendSmtp(subject, body, from, to);
 
                 return RedirectToAction("Index");
             }

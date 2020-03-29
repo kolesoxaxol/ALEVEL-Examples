@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlogBL;
+using BlogEducationALvl.Services;
 using LightInject;
 using LightInject.Mvc;
 using LightInject.WebApi;
@@ -26,6 +27,7 @@ namespace BlogEducationALvl.App_Start
             container = BLLightInjectCongiguration.Congiguration(container);
 
             container.Register<IArticleService, ArticleService>();
+            container.Register<IEmailService, EmailService>();
             //var resolver = new LightInjectWebApiDependencyResolver(container);             
             //DependencyResolver.SetResolver(new LightInjectMvcDependencyResolver(container));
             container.EnableMvc();
