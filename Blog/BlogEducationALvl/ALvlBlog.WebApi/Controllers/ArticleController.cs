@@ -1,4 +1,5 @@
-﻿using ALvlBlog.WebApi.Models;
+﻿using ALvlBlog.WebApi.Filters;
+using ALvlBlog.WebApi.Models;
 using ALvlBlog.WebApi.Responses;
 using ALvlBlog.WebApi.Services;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Http;
 
 namespace ALvlBlog.WebApi.Controllers
 {
+    [AuthorizeBlogFilter]
     public class ArticleController : ApiController
     {
         private readonly IArticleService _articleService;
