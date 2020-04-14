@@ -28,6 +28,7 @@ namespace BlogEducationALvl.App_Start
 
             container.Register<IArticleService, ArticleService>();
             container.Register<IEmailService, EmailService>();
+            container.Register<IArticleApiService, ArticleApiService>();
             //var resolver = new LightInjectWebApiDependencyResolver(container);             
             //DependencyResolver.SetResolver(new LightInjectMvcDependencyResolver(container));
             container.EnableMvc();

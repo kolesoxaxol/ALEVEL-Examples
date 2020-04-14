@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BlogBL;
 using BlogEducationALvl.Models;
+using BlogEducationALvl.Responses;
 using BlogEducationALvl.Services;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -12,11 +13,13 @@ namespace BlogEducationALvl.Controllers
         private readonly IArticleService _articleService;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
-        public ArticleController(IArticleService articleService, IMapper mapper, IEmailService emailService)
+        private readonly IArticleApiService _apiArticleService;
+        public ArticleController(IArticleService articleService, IMapper mapper, IEmailService emailService, IArticleApiService apiArticleService)
         {
             _articleService = articleService;
             _mapper = mapper;
             _emailService = emailService;
+            _apiArticleService = apiArticleService;
         }
 
         // GET: Article
@@ -24,10 +27,14 @@ namespace BlogEducationALvl.Controllers
         {
             
             var listBLArticle = _articleService.GetAll();
-            var articles = _mapper.Map<IEnumerable<ArticleModel>>(listBLArticle);     
-            
+            var articles = _mapper.Map<IEnumerable<ArticleModel>>(listBLArticle);
 
-            return View(articles);
+            ArticleResponse response = _apiArticleService.GetArticles();
+            var apiArticles = response.Data;
+
+            var fullArticleList = _mapper.Map<IEnumerable<ArticleModel>>(apiArticles);
+
+            return View(fullArticleList);
         }
 
         // GET: Article/Details/5
