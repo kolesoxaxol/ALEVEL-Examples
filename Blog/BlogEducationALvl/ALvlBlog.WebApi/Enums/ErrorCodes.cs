@@ -9,5 +9,8 @@ namespace ALvlBlog.WebApi.Enums
     {
         Success = 0,
         General = 1,
+        InvalidArticleId = 2,
+        InvalidAuthorName = 3
+
     }
 }

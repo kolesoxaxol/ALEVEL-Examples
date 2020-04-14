@@ -187,6 +187,9 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Enums\ErrorCodes.cs" />
     <Compile Include="Filters\AuthorizeBlogFilter.cs" />
+    <Compile Include="Filters\CustomExceptions\ApiException.cs" />
+    <Compile Include="Filters\CustomExceptions\InvalidArticleIdException.cs" />
+    <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

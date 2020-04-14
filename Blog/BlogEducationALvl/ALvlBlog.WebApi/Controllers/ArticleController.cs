@@ -1,7 +1,9 @@
 ﻿using ALvlBlog.WebApi.Filters;
+using ALvlBlog.WebApi.Filters.CustomExceptions;
 using ALvlBlog.WebApi.Models;
 using ALvlBlog.WebApi.Responses;
 using ALvlBlog.WebApi.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +12,7 @@ using System.Web.Http;
 namespace ALvlBlog.WebApi.Controllers
 {
     [AuthorizeBlogFilter]
+    [ExceptionFilter]
     public class ArticleController : ApiController
     {
         private readonly IArticleService _articleService;
@@ -29,6 +32,11 @@ namespace ALvlBlog.WebApi.Controllers
         // GET: api/Article/5
         public string Get(int id)
         {
+            if (id > 1000)
+            {
+                throw new InvalidArticleIdException("invalid id for artilce id", id.ToString());
+            }
+          
             return "value";
         }
 
