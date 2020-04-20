@@ -12,7 +12,7 @@ namespace BlogAuthServer
         {
             return new List<ApiResource>
             {
-                new ApiResource("IdentiyServer", "Api for Blog")
+                new ApiResource("BlogApi", "Api for Blog")
 
             };
         }
@@ -27,7 +27,7 @@ namespace BlogAuthServer
                         new Secret("secret".Sha256())
                     },
 
-                    AllowedScopes = {"bankOfDotNetApi"}
+                    AllowedScopes = {"BlogApi"}
 
                 }
             };
