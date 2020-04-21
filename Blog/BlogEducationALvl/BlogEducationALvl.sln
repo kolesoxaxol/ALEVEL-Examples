@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentiyServer", "IdentiySer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogAuthServer", "BlogAuthServer\BlogAuthServer.csproj", "{6670AFEC-EF5D-4E3B-8A87-6B758D1F72CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApiConsole", "BlogApiConsole\BlogApiConsole.csproj", "{865F7A45-5024-4D09-9DBD-7B79BE071B6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6670AFEC-EF5D-4E3B-8A87-6B758D1F72CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6670AFEC-EF5D-4E3B-8A87-6B758D1F72CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6670AFEC-EF5D-4E3B-8A87-6B758D1F72CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{865F7A45-5024-4D09-9DBD-7B79BE071B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865F7A45-5024-4D09-9DBD-7B79BE071B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865F7A45-5024-4D09-9DBD-7B79BE071B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865F7A45-5024-4D09-9DBD-7B79BE071B6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
