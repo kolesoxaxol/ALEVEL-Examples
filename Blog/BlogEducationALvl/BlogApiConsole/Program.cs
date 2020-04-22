@@ -1,6 +1,8 @@
 ﻿using IdentityModel.Client;
+using Newtonsoft.Json;
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 
@@ -53,6 +55,33 @@ namespace BlogApiConsole
             Console.WriteLine(tokenResponse.Json);
             Console.WriteLine();
             Console.WriteLine();
+
+
+            var client = new HttpClient();
+            client.SetBearerToken(tokenResponse.AccessToken);
+
+            var customerInfo = new StringContent(JsonConvert.SerializeObject(new { Id = 10, FirstName = "KOliesnik", LastName = "Yevhenii" }), Encoding.UTF8, "application/json");
+            var createCustomerResponse = await client.PostAsync("http://localhost:44301/api/customers", customerInfo);
+
+            if (!createCustomerResponse.IsSuccessStatusCode)
+            {
+                Console.WriteLine(createCustomerResponse.StatusCode);
+            }
+
+            var getCustomerResponse = await client.GetAsync("https://localhost:44301/api/users");
+
+
+            if (!getCustomerResponse.IsSuccessStatusCode)
+            {
+                Console.WriteLine(getCustomerResponse.StatusCode);
+            }
+            else
+            {
+                var content = await getCustomerResponse.Content.ReadAsStringAsync();
+                Console.WriteLine(content);
+                
+            }
+
         }
 
     }
