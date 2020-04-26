@@ -26,7 +26,8 @@ namespace BlogAuthServer
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()     
                 .AddInMemoryApiResources(Config.GetAllApiResources())
-                .AddInMemoryClients(Config.GetClients());
+                .AddInMemoryClients(Config.GetClients())
+                .AddTestUsers(Config.GetTestUsers());
 
             services.AddRazorPages();
         }

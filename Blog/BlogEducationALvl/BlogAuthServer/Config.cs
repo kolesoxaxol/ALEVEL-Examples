@@ -1,13 +1,19 @@
 ﻿using IdentityServer4.Models;
-using System;
+using IdentityServer4.Test;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BlogAuthServer
 {
     public class Config
     {
+        public static List<TestUser> GetTestUsers()
+        {
+            return new List<TestUser>
+            {
+                new TestUser{Username="Mikhail",  Password="password1", SubjectId="1"},
+                new TestUser{ Username=  "Yevhenii",  Password="password2", SubjectId="2"}
+            };
+        }
         public static IEnumerable<ApiResource> GetAllApiResources()
         {
             return new List<ApiResource>
@@ -29,7 +35,16 @@ namespace BlogAuthServer
 
                     AllowedScopes = {"BlogApi"}
 
+                },
+                // Resource Owner Password grand type
+                new Client
+                {
+                    ClientId="ro.client",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets = { new Secret("secret".Sha256())},
+                       AllowedScopes = {"BlogApi"}
                 }
+
             };
         }
     }

@@ -14,6 +14,34 @@ namespace BlogApiConsole
 
         private static async Task MainAsync()
         {
+
+            var client = new HttpClient();
+
+            var discoRO = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+
+            if (discoRO.IsFaulted)
+            {
+                Console.WriteLine(discoRO.Result);
+                return;
+            }
+
+
+
+            // Grab user token using RecoverOwnerPasswordType
+       
+            var tokenClienResp = await client.RequestTokenAsync(new TokenRequest
+            {
+                Address = discoRO.TokenEndpoint,
+                ClientId = "ro.client",
+                ClientSecret = "secret",
+            });
+            //ToDO: finish this example
+
+          //  var Roresponse = tokenClienResp.RequestResourceOwnerPasswordAsync();
+
+
+
+
             HttpClient httpClient = new HttpClient();
 
             //Below code will give you discovery document response previously we were creating using DiscoveryClient()
@@ -57,7 +85,6 @@ namespace BlogApiConsole
             Console.WriteLine();
 
 
-            var client = new HttpClient();
             client.SetBearerToken(tokenResponse.AccessToken);
 
             var customerInfo = new StringContent(JsonConvert.SerializeObject(new { Id = 10, FirstName = "KOliesnik", LastName = "Yevhenii" }), Encoding.UTF8, "application/json");
